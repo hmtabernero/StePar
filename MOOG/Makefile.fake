@@ -1,0 +1,19 @@
+all: ./MOOG
+
+
+./MOOG: ./*.f
+	rm -f ./*.o
+	rm -f ./MOOG
+	$(MAKE) -C ./fake_sm-2.4.35/ -f Makefile
+	$(MAKE) -C ./ -f Makefile.rhsilent
+
+
+.PHONY: clean
+
+
+clean:
+	rm -f ispec.log
+	rm -f ./fake_sm-2.4.35/lib/libfakesm.a
+	rm -f ./fake_sm-2.4.35/src/fakesm.o
+	rm -f ./*.o
+	rm -f ./MOOG
