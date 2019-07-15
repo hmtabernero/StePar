@@ -3,7 +3,7 @@ HOW TO INSTALL STEPAR
 
 StePar is a code to automatically infer stellar atmospheric parameters using the EW method.
 
-For the time being this is the code and the installation instructions. A paper related to this code has been recently accepted in A&A.
+For the time being this is the code and the installation instructions. A paper describing this code has been recently accepted in A&A.
 
 If you use this code please cite Tabernero et al. (2019), in press. This Code is under the two clause BSD-licence.
 
@@ -95,14 +95,14 @@ Model grid:
 	
 	MARCS1M.bin -> A grid of MARCS atmospheric models. 
 	
-	For the time being this version only accepts MARCS models. In the near future I will include KURUCZ models. If there is a particular need for a GRID (i.e., APOGEE or PHOENIX), please let me know.
+For the time being this version only accepts MARCS models. In the near future I will include KURUCZ models. If there is a particular need for a GRID (i.e., APOGEE or PHOENIX), please let me know.
 
-If you did everything correctly, please place your EW file in EW/ 
+If you did everything correctly, please place your EW file in EW/.  
 
 There are already two example files in that particular folder: 
 
-Sun HARPS  -> HARPS.Archive_Sun-4Fe.l
-Sun NARVAL -> NARVAL_Sun-1Fe.l
+	Sun HARPS  -> HARPS.Archive_Sun-4Fe.l
+	Sun NARVAL -> NARVAL_Sun-1Fe.l
 
 Just in case:
 
@@ -111,15 +111,15 @@ Just in case:
 
 Now it is time to properly run StePar for these two examples. Check the contents of runStePar.sh:
 
-./runstar.sh HARPS.Archive_Sun-4
-./runstar.sh NARVAL_Sun-1
+$ ./runstar.sh HARPS.Archive_Sun-4
+$ ./runstar.sh NARVAL_Sun-1
 
 If you want to use another starfile just do this:
 
 put a file called MyStarFe.l  in EW/
 put a line in runStePar.sh called:
 
-./runstar.sh MyStar
+$ ./runstar.sh MyStar
 
 Wait for a little, then check StePar_results when it is done. There will be one line for each StePar iteration (by default 2).
 
