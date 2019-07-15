@@ -12,7 +12,7 @@ Perhaps these instructions need more beta-testing. If you find any bugs, let me 
 Requirements: GNU/Linux, Mac OS, BSD.
 Dependencies: MOOG, numpy, scipy, gfortran, make
 
-I did provide a MOOG folder with everything you need. However, it is wise to check their webpage: https://www.as.utexas.edu/~chris/moog.html
+I provided a MOOG folder with everything you need. However, it is wise to check MOOGS's webpage: https://www.as.utexas.edu/~chris/moog.html
 
 Highly recommended auxiliary tools:
 
