@@ -40,7 +40,8 @@ Debian or Debian-based (i.e. Ubuntu) distro:
 	$ sudo apt upgrade
 	$ sudo apt install python3-numpy python3-scipy gfortran build-essential
 
-	Note: Debian is so stable that it hurts. Its software is incredibly reliable, but also incredibly old ()
+	Note: Debian is so stable that it hurts. Its software is incredibly reliable, but also incredibly old.
+	
 Arch or Arch-based (i.e. Manjaro):
 
 	$ sudo pacman -Syy
@@ -85,6 +86,10 @@ If you have cloned the repo you will have a folder structure already set up. How
 	TXT -> MOOG response files
 
 	PAR -> MOOG par file
+	
+Just in case:
+	
+	$ mkdir LOGS EW STD_OUT ABUN DATA TXT PAR
 
 Model grid:
 	
