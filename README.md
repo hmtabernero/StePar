@@ -12,7 +12,9 @@ Perhaps these instructions need more beta-testing. If you find any bugs, let me 
 Requirements: GNU/Linux, Mac OS, BSD.
 Dependencies: MOOG, numpy, scipy, gfortran, make
 
-I provided a MOOG folder with everything you need. However, it is wise to check MOOGS's webpage: https://www.as.utexas.edu/~chris/moog.html
+I provided a MOOG folder with everything you need. However, it is wise to check MOOGS's webpage: https://www.as.utexas.edu/~chris/moog.html 
+
+The MOOG folder includes a pretty awesome hack written by Sergi Blanco Cuaresma to avoid supermongo (Thanks, Sergi!).
 
 Highly recommended auxiliary tools:
 
@@ -40,7 +42,7 @@ Debian or Debian-based (i.e. Ubuntu) distro:
 	$ sudo apt upgrade
 	$ sudo apt install python3-numpy python3-scipy gfortran build-essential
 
-	Note: Debian is so stable that it hurts. Its software is incredibly reliable, but also incredibly old.
+	Note: Debian is so stable that it hurts. Its software is incredibly reliable, but also incredibly old (according to Matt Hartley, see: https://www.youtube.com/watch?v=IC2op3AZMfM).
 	
 Arch or Arch-based (i.e. Manjaro):
 
@@ -56,6 +58,7 @@ Mac OS:
         $ sudo port install py37-numpy py37-scipy gcc8
 
 Clone the repo:
+
 	git clone https://github.com/hmtabernero/StePar
 
 Now it is time to compile MOOG. This is the same thing in each operating system (GNU/Linux, BSD or Mac OS)
@@ -66,9 +69,9 @@ In the StePar folder:
 	$ make -f Makefile.fake clean
 	$ make -f Makefile.fake
 
-	If it compiled you are good to go.
+If it compiled you are good to go:
 
-	cp MOOGnointro ..
+	$ cp MOOGnointro ..
 
 If you have cloned the repo you will have a folder structure already set up. However, I think it is important to know the folders:
 
@@ -110,16 +113,16 @@ Just in case:
 
 Now it is time to properly run StePar for these two examples. Check the contents of runStePar.sh:
 
-$ ./runstar.sh HARPS.Archive_Sun-4
-$ ./runstar.sh NARVAL_Sun-1
+	./runstar.sh HARPS.Archive_Sun-4
+	./runstar.sh NARVAL_Sun-1
 
 If you want to use another starfile just do this:
 
 put a file called MyStarFe.l  in EW/
 put a line in runStePar.sh called:
 
-$ ./runstar.sh MyStar
+	./runstar.sh MyStar
 
-Wait for a little, then check StePar_results when it is done. There will be one line for each StePar iteration (by default 2).
+Wait for a little while, then check StePar_results when it is done. There will be one line for each StePar iteration (by default 2).
 
 Enjoy! Drop me a line if you need help.
