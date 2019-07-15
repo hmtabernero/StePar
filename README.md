@@ -1,9 +1,9 @@
 
-HOW TO INSTALL STEPAR
+HOW TO INSTALL THE STEPAR CODE
 
 StePar is a code to automatically infer stellar atmospheric parameters using the EW method.
 
-For the time being this is the code and the installation instructions. A paper describing this code has been recently accepted in A&A.
+For the time being this is the code and the installation instructions. A paper describing this code has been recently accepted in A&A. 
 
 If you use this code please cite Tabernero et al. (2019), in press. This Code is under the two clause BSD-licence.
 
