@@ -44,8 +44,7 @@ Debian or Debian-based (i.e. Ubuntu) distro:
 	
 Arch or Arch-based (i.e. Manjaro):
 
-	$ sudo pacman -Syy
-	$ sudo pacman -Su
+	$ sudo pacman -Syu
 	$ sudo pacman -S python-numpy python-scipy gfortran base-devel
 
 	Note: Arch is a bleeding edge distro, be careful as it fetches updates directly from upstream. Manjaro is more or less the same.  
