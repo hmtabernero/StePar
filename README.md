@@ -93,7 +93,7 @@ If you have cloned the repo you will have a folder structure already set up. How
 
 	PAR -> MOOG par file
 	
-Create some needed directories:
+Create the missing directories:
 	
 	$ mkdir LOGS STD_OUT ABUN TXT PAR
 
