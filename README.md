@@ -52,14 +52,18 @@ Arch or Arch-based (i.e. Manjaro):
 	Note: Arch is a bleeding edge distro, be careful as it fetches updates directly from upstream. Manjaro is more or less the same.  
 
 Mac OS:
-	Use a ports tree. You are on a BSD-like system. Mac ports is a good one:
-
+	
+	Use a ports tree. You are on a BSD-like system. Mac ports is a good one
 	$ sudo port -d selfupdate
         $ sudo port install py37-numpy py37-scipy gcc8
+	
+gfortran for Mac OS is also available here: 
 
+	https://github.com/fxcoudert/gfortran-for-macOS
+	
 Clone the repo:
 
-	git clone https://github.com/hmtabernero/StePar
+	$ git clone https://github.com/hmtabernero/StePar
 
 Now it is time to compile MOOG. This is the same thing in each operating system (GNU/Linux, BSD or Mac OS)
 
@@ -89,9 +93,9 @@ If you have cloned the repo you will have a folder structure already set up. How
 
 	PAR -> MOOG par file
 	
-Just in case:
+Create some needed directories:
 	
-	$ mkdir LOGS EW STD_OUT ABUN DATA TXT PAR
+	$ mkdir LOGS STD_OUT ABUN TXT PAR
 
 Model grid:
 	
@@ -123,6 +127,6 @@ put a line in runStePar.sh called:
 
 	./runstar.sh MyStar
 
-Wait for a little while, then check StePar_results when it is done. There will be one line for each StePar iteration (by default 2).
+Wait for a little while, then check StePar_results when it is done, the columns are already written for you. There will be one line for each StePar iteration (by default 2).
 
 Enjoy! Drop me a line if you need help.
