@@ -127,6 +127,8 @@ put a line in runStePar.sh called:
 
 	./runstar.sh MyStar
 
-Wait for a little while, then check StePar_results when it is done, the columns are already written for you. There will be one line for each StePar iteration (by default 2).
+Wait for a little while, then check StePar_results when it is done, the columns are already written for you. There will be one line for each StePar iteration (by default 2). The file should contain the Stellar parameters. The second line, for a given star, is your final result. 
+
+The two available examples should give the same results presented in the StePar paper. It is very important to check these values before using the code for anything else. 
 
 Enjoy! Drop me a line if you need help.
