@@ -12,7 +12,7 @@ Perhaps these instructions need more beta-testing. If you find any bugs, let me 
 Requirements: GNU/Linux, Mac OS, BSD.
 Dependencies: MOOG, numpy, scipy, gfortran, make
 
-I provided a MOOG folder with everything you need. However, it is wise to check MOOGS's webpage: https://www.as.utexas.edu/~chris/moog.html 
+I provided a MOOG folder with everything you need. However, it is wise to check MOOG's webpage: https://www.as.utexas.edu/~chris/moog.html 
 
 The MOOG folder includes a pretty awesome hack written by Sergi Blanco Cuaresma to avoid supermongo (Thanks, Sergi!).
 
@@ -21,7 +21,7 @@ Highly recommended auxiliary tools:
 	ARES: https://github.com/sousasag/ARES 
 	TAME: http://astro.snu.ac.kr/~wskang/tame/
 
-You must install numpy and scipy by yourself (pip, anaconda, apt, pacman, yum, etc), as well as development tools (make, gfortran, ...)
+You must install numpy and scipy by yourself (pip, anaconda, apt, pacman, yum, etc), as well as development tools (make, gfortran, ...). 
 
 StePar is known to work on Mac OS, and some popular distros (Arch, Debian, Fedora, Manjaro, Solus, and Ubuntu). I assume it will run on a BSD system as well. If you try it let me now.
 
@@ -127,8 +127,10 @@ put a line in runStePar.sh called:
 
 	./runstar.sh MyStar
 
-Wait for a little while, then check StePar_results when it is done, the columns are already written for you. There will be one line for each StePar iteration (by default 2). The file should contain the Stellar parameters. The second line, for a given star, is your final result. 
+Wait for a little while, then check StePar_results when it is done, the columns are already written for you. There will be one line for each StePar iteration (by default 2). The file should contain the Stellar parameters. The second line, for a given star, is your final result. These two "dot sh" scripts are crucial if you want to calcuate many stars in a row. If one stars fails for any reason, the next star will be analysed by the code. Use bash scripts, they are an empowering thing to learn. 
 
 The two available examples should give the same results presented in the StePar paper. It is very important to check these values before using the code for anything else. 
 
 Enjoy! Drop me a line if you need help.
+
+Happy hacking!
