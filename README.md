@@ -1,7 +1,9 @@
 How to install StePar
 ======================
 
-StePar is a code used to automatically infer stellar atmospheric parameters using the EW method.For the time being this is the code and the installation instructions. A paper describing this code has been recently accepted in A&A. 
+StePar is a code used to automatically infer stellar atmospheric parameters using the EW method. 
+
+For the time being this is the code and the installation instructions. A paper describing this code has been recently accepted in A&A. 
 
 A pre-print is available on astroph: https://arxiv.org/abs/1907.06512
 
@@ -12,7 +14,9 @@ Perhaps these instructions need more beta-testing. If you find any bugs, let me 
 Requirements: GNU/Linux, Mac OS, BSD.
 Dependencies: MOOG, numpy, scipy, gfortran, make
 
-I provided a MOOG folder with everything you need. However, it is wise to check MOOG's webpage: https://www.as.utexas.edu/~chris/moog.html 
+I provided a MOOG folder with everything you need. However, it is wise to check MOOG's webpage: 
+
+	https://www.as.utexas.edu/~chris/moog.html 
 
 The MOOG folder includes a pretty awesome hack written by Sergi Blanco Cuaresma to avoid supermongo (Thanks, Sergi!).
 
@@ -23,7 +27,9 @@ Highly recommended auxiliary tools:
 
 You must install numpy and scipy by yourself (pip, anaconda, apt, pacman, yum, etc), as well as development tools (make, gfortran, ...). 
 
-StePar is known to work on Mac OS, and some popular distros (Arch, Debian, Fedora, Manjaro, Solus, and Ubuntu). I assume it will run on a BSD system as well. If you try it let me now.
+StePar is known to work on Mac OS, and some popular distros (Arch, Debian, Fedora, Manjaro, Solus, and Ubuntu). 
+
+I assume it will run on a BSD system as well. If you try it let me now.
 
 StePar will only derive parameters, it will not measure any EWs for you. However, we do RECOMMEND to grab ARES or TAME to do the task. 
 
