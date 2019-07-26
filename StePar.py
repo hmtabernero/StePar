@@ -389,16 +389,16 @@ def get_error_v(x, met, starname,fesun,slope2,sslope2):
     if rootvp:
         vmicn = optimize.brentq(error_v, vmica, vmicb, xtol=0.001, args=(T, logg, met, starname, fesun, slope2+sslope2))
         root  = True
-        log_string="Root found +delta slope2"
+        log_string="Root found +delta slope2\n"
     else:
         rootvn,vmica,vmicb = check_error_v(x,met,starname,fesun,slope2-sslope2)
         if rootvn:
             vmicn = optimize.brentq(error_v, vmica, vmicb, xtol=0.001, args=(T, logg, met, starname, fesun, slope2-sslope2))
             root = True
-            log_string = "Root found -delta slope2"
+            log_string = "Root found -delta slope2\n"
         else:
             root = False
-            log_string = "Could not find a root"
+            log_string = "Could not find a root\n"
 
     if root: 
         evmic = np.abs(vmicn-vmic)
@@ -414,16 +414,16 @@ def get_error_tm(x, met, starname,fesun,slope1,sslope1):
     if roottp:
         Tn = optimize.brentq(error_tm, Ta, Tb, xtol=0.001, args=(logg, vmic, met, starname, fesun, slope1+sslope1))
         root  = True
-        log_string="Root found +delta slope1"
+        log_string="Root found +delta slope1\n"
     else:
         roottn,Ta,Tb = check_error_tm(x,met,starname,fesun,slope1-sslope1)
         if roottn:
             vmicn = optimize.brentq(error_tm, Ta, Tb, xtol=0.001, args=(logg, vmic, met, starname, fesun, slope1-sslope1))
             root = True
-            log_string = "Root found -delta slope1"
+            log_string = "Root found -delta slope1\n"
         else:
             root = False
-            log_string = "Could not find a root"
+            log_string = "Could not find a root\n"
 
     if root:
         eT = np.abs(Tn-T)
@@ -438,17 +438,17 @@ def get_error_tv(x, met, starname,fesun,dvmic):
     if roottp:
         Tn = optimize.brentq(error_tv, Ta, Tb, xtol=0.001, args=(logg, vmic+dvmic, met, starname, fesun))
         root  = True
-        log_string="Root found +delta vmicro"
+        log_string="Root found +delta vmicro\n"
     else:
         xn=[T, logg, vmic-dvmic]
         roottn,Ta,Tb = check_error_tv(xn,met,starname,fesun)
         if roottn:
             Tn = optimize.brentq(error_tm, Ta, Tb, xtol=0.001, args=(logg, vmic-dvmic, met, starname, fesun))
             root = True
-            log_string = "Root found -delta vmicro"
+            log_string = "Root found -delta vmicro\n"
         else:
             root = False
-            log_string = "Could not find a root"
+            log_string = "Could not find a root\n"
 
     if root:
         eT = np.abs(Tn-T)
@@ -462,16 +462,16 @@ def get_error_gd(x, met, starname,fesun, AFe2, sAFe2):
     if rootgp:
         loggn = optimize.brentq(error_gd, logga, loggb, xtol=0.001, args=(T, vmic, met, starname, fesun,AFe2+sAFe2))
         root  = True
-        log_string="Root found +delta sAFe2"
+        log_string="Root found +delta sAFe2\n"
     else:
         rootgn,logga,loggb = check_error_gd(x,met,starname,fesun,AFe2-sAFe2)
         if rootgn:
             loggn = optimize.brentq(error_gd, logga, loggb, xtol=0.001, args=(T, vmic, met, starname, fesun, AFe-sAFe2))
             root = True
-            log_string = "Root found -delta sAFe2"
+            log_string = "Root found -delta sAFe2\n"
         else:
             root = False
-            log_string = "Could not find a root"
+            log_string = "Could not find a root\n"
 
     if root:
         elg = np.abs(loggn-logg)
@@ -488,17 +488,17 @@ def get_error_gp(x, met, starname,fesun,spar):
         T, logg, vmic = xp
         loggn = optimize.brentq(error_gp, logga, loggb, xtol=0.001, args=(T, vmic, met, starname, fesun))
         root  = True
-        log_string="Root found +delta PAR"
+        log_string="Root found +delta PAR\n"
     else:
         T, logg, vmic = xn
         rootgn,logga,loggb = check_error_gp(xn,met,starname,fesun)
         if rootgn:
             loggn = optimize.brentq(error_gp, logga, loggb, xtol=0.001, args=(T, vmic, met, starname, fesun))
             root = True
-            log_string = "Root found -delta PAR"
+            log_string = "Root found -delta PAR\n"
         else:
             root = False
-            log_string = "Could not find a root"
+            log_string = "Could not find a root\n"
 
     if root:
         elg = np.abs(loggn-logg)
@@ -548,7 +548,9 @@ def get_error_metal(x, met, starname, fesun, sx):
             eAFe1v = np.abs(af1v-af1)
             eAFe2v = np.abs(af2v-af2)
             eAFe1  = np.sqrt(eAFe1t**2. + eAFe1g**2. + eAFe1v**2.)
-            eAFe2  = np.sqrt(eAFe2t**2. + eAFe2g**2. + eAFe2v**2.) 
+            eAFe2  = np.sqrt(eAFe2t**2. + eAFe2g**2. + eAFe2v**2.)
+            #last evaluation is the final solution (you do not have to rerun MOOG/and recreate the atmospheric model)
+            slp1, slp2, af1t, af2t = objective_function_vec(x, met, starname,fesun)
             return eAFe1,eAFe2
         else:
             return -9.99,-9.99
@@ -563,17 +565,22 @@ def get_errors(starname, x, met, fesun):
        evmic, log_string_vmic =get_error_v(x, met, starname, fesun, slope2, sslope2)
        eTm,log_string_Tm = get_error_tm(x, met, starname, fesun, slope1,sslope1)
        file_error_log.write(log_string_vmic)
-       file_error_log.write(log_string_Tm)
        if evmic >= 0.:
+           file_error_log.write("error on vmicro: {0:4.2f}\n".format(evmic))
            eTv,log_string_Tv = get_error_tv(x, met ,starname, fesun, evmic)
-           file_error_log.write(log_string_Tv)
        else:
            eTv = -9999
-           file_error_log.write("Error on vmicro is ill-defined")
        if eTv >= 0. and eTm >= 0.:
            eTeff = np.sqrt(eTv**2.+eTm**2.)
        else :
            eTeff = -9999
+
+       file_error_log.write(log_string_Tm)
+       file_error_log.write("error on Teff (slope1): {0:4.0f}\n".format(eTm))
+       file_error_log.write(log_string_Tv)
+       file_error_log.write("error on Teff (vmicro): {0:4.0f}\n".format(eTv))
+       file_error_log.write("Total error on Teff: {0:4.0f}\n".format(eTeff))
+
        if evmic >= 0. and eTeff >= 0.:
            elgd,log_string_gd = get_error_gd(x, met, starname, fesun, AFe2, sAFe2)   
            dvecT=[eTeff,0.,0.]
@@ -661,48 +668,59 @@ def nelder_optimizer(starname,xin,metin,fesun,it_simp,it_res_simp):
         slp1, slp2, af1, af2 = objective_function_vec(xin, metin, starname,fesun)
         # Here, the simplex will be oriented towards the mininum (acording to slope1, slope2, and Fe1-Fe2)
         # Steps on each parameter: Teff,logg, and vmic -> 200 K, 0.2 dex, and 0.2 km/s -> l1,l2,l3
-        #Teff
+        # 
+        # Feel free to do as you please with the simplex initialization
+
+        #Teff:
+        
         if slp1 <= 0:
             l1 = -200
         else:
-            l1 = 200
-        #logg
+            l1 = +200
+        
+        #logg:
+        
         if af1-af2 <= 0:
             l2 = -0.20
         else:
             l2 = +0.20
 
-        # vmicro 
+        # vmicro:
+        
         if slp2 <= 0:
             l3 = -0.20
         else:
-            l3 = 0.20
+            l3 = +0.20
+
         # Generate the simplex. X0 to X3 are the points where we want to evaluate our objective function.
+        
         X0 = [T, logg, vmic]
         X1 = [T + l1, logg, vmic]
         X2 = [T, logg + l2, vmic]
         X3 = [T, logg, vmic + l3]
 
         # We evaluate these simplex points.
+        
         f0 = objective_function(X0, met, starname, fesun)
         f1 = objective_function(X1, met, starname, fesun)
         f2 = objective_function(X2, met, starname, fesun)
         f3 = objective_function(X3, met, starname, fesun)
 
         # 4-point matrix is then ordered.
+        
         S = [[f0, X0], [f1, X1], [f2, X2], [f3, X3]]
+
         # New way of sorting S. S is sorted according to f0 to f4 values (minimum f 'number' value goes first).
+       
         S.sort(key=lambda x: x[0])
         count_simp = 0
         [slp1, slp2, af1, af2] = objective_function_vec(S[0][1], met, starname,fesun)
         
-        # While s1, s2, s31, s32 values are too big and number of iterations through this loop is less than 'it' (which
-
-        # is 25 by default), then do this:
+        # While s1, s2, s31, s32 values are too big and number of iterations through this loop is less than 'it', then do this:
         while (np.abs(slp1) >= 0.001 or np.abs(slp1) >= 0.002 or np.abs(af1-af2) >= 0.005) and count_simp < it_simp:
             S = simplex(S, met, starname,fesun)
             [slp1, slp2, af1, af2] = objective_function_vec(S[0][1], met, starname,fesun)
-            log_string = 'Interation #' + str(count_simp + 1) + '\n'
+            log_string = 'Iteration #' + str(count_simp + 1) + '\n'
             log_string += str(S[0][0]) + ' ' + format(S[0][1][0], '4.0f') + ' ' + \
                 format(S[0][1][1], '4.2f') + ' ' + format(S[0][1][2], '5.3f') + ' ' \
                 + str(slp1) + ' ' + str(slp2) + ' ' + str(af1-af2) + '\n'
@@ -771,8 +789,11 @@ gridMODS.close()
 #test interpolator
 xin=[5777.,4.438,1.00]
 metin=0.0
-fesun=7.45
-# star="HARPS.GBOG_ksiHya"#"18ScoARES"
+
+#this is the solar abundance for Fe (Grevesse et al., 2007) compatible with MARCS. 
+#You may want to alter this value if needed.
+fesun = 7.45
+
 xbad=[-9999.,-99.99,-99.99]
 sxbad=[-9999.,-99.99,-99.99]
 mbad=[-99.99]
