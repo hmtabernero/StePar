@@ -31,7 +31,7 @@ FC = gfortran
 #FFLAGS = -Wall -m32 -ff2c
 #FFLAGS = -Wall -ff2c
 #FFLAGS = -Wall -O1 -ff2c
-FFLAGS = -Wall -m64 -ff2c
+FFLAGS = -Wall -m64 -ff2c -std=legacy
 SMLIB = fake_sm-2.4.35
 
 #CC = cc
